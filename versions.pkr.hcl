@@ -8,5 +8,9 @@ packer {
 			version = "~> 1"
 			source  = "github.com/hashicorp/vagrant"
 		}
+		proxmox = {
+			version = "~> 1"
+			source  = "github.com/hashicorp/proxmox"
+		}
 	}
 }

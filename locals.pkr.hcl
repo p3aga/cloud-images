@@ -12,6 +12,6 @@ locals {
 
 # almalinux 10 variables
 locals {
-	almalinux_10_iso_url        = "https://raw.repo.almalinux.org/almalinux/10.1/isos/x86_64/AlmaLinux-10-latest-x86_64-minimal.iso"
-	almalinux_10_iso_checksum   = "sha256:049efd183a5a841dd432b3427eb6faa7deb3bf6c6bf2c63cbffa024b9c651725"
+	almalinux_10_iso_url      = "https://raw.repo.almalinux.org/almalinux/10.1/isos/x86_64/AlmaLinux-10-latest-x86_64-minimal.iso"
+	almalinux_10_iso_checksum = "sha256:049efd183a5a841dd432b3427eb6faa7deb3bf6c6bf2c63cbffa024b9c651725"
 }
