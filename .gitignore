@@ -1,0 +1,5 @@
+*.box
+*.pkrvars.hcl
+*.log
+*.iso
+*.qcow2
