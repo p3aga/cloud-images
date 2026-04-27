@@ -9,7 +9,7 @@ source "proxmox-iso" "almalinux10-proxmox" {
 	vm_id                    = "9100"
 	tags                     = "almalinux"
 
-	boot                     = "order=scsi0"
+	boot                     = "order=scsi0;ide0"
 	memory                   = 2048
 	cores                    = 2
 	cpu_type                 = "x86-64-v3"
@@ -18,8 +18,15 @@ source "proxmox-iso" "almalinux10-proxmox" {
 
 	qemu_agent               = true
 	scsi_controller          = "virtio-scsi-pci"
-	onboot                   = true
+	onboot                   = false
 	cloud_init               = true
+	cloud_init_storage_pool  = "local-lvm"
+
+	ssh_username             = "root"
+	ssh_password             = "almalinux"
+	ssh_timeout              = "10m"
+
+	http_directory           = "http"
 
 	boot_wait                = "10s"
 	boot_command             = [
@@ -37,15 +44,16 @@ source "proxmox-iso" "almalinux10-proxmox" {
 		"<leftCtrlOn>x<leftCtrlOff>",
 	]
 
-	boot_iso {
-		type        = "ide"
-		iso_url     = "https://raw.repo.almalinux.org/almalinux/10.1/isos/x86_64/AlmaLinux-10-latest-x86_64-minimal.iso"
-		unmount     = true
-		iso_cheksum = "sha256:049efd183a5a841dd432b3427eb6faa7deb3bf6c6bf2c63cbffa024b9c651725"
-	}
-
 	vga {
 		type = "serial0"
+	}
+
+	boot_iso {
+		type             = "ide"
+		iso_url          = "https://raw.repo.almalinux.org/almalinux/10.1/isos/x86_64/AlmaLinux-10-latest-x86_64-minimal.iso"
+		unmount          = true
+		iso_checksum     = "sha256:049efd183a5a841dd432b3427eb6faa7deb3bf6c6bf2c63cbffa024b9c651725"
+		iso_storage_pool = "local"
 	}
 
 	network_adapters {
@@ -62,6 +70,5 @@ source "proxmox-iso" "almalinux10-proxmox" {
 }
 
 build {
-  name    = "Proxmox Almalinux 10 Build"
-  sources = ["source.proxmox-iso.almalinux10"]
+  sources = ["source.proxmox-iso.almalinux10-proxmox"]
 }

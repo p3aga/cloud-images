@@ -24,3 +24,5 @@ crash.log
 output-*/
 
 # End of https://www.toptal.com/developers/gitignore/api/packer
+*.iso
+*.lock
